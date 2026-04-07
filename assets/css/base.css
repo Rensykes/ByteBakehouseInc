@@ -1,0 +1,92 @@
+﻿/* Base page styles, resets, and shared custom properties */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+@property --tv-hue {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+@property --tv-rotate {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+@property --tv-bg-y {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+@property --tv-bg-x {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+@property --tv-glow-translate-y {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+@property --tv-bg-size {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 1;
+}
+@property --tv-glow-opacity {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 1;
+}
+@property --tv-glow-blur {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 6;
+}
+@property --tv-glow-scale {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 1.5;
+}
+@property --tv-glow-radius {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 100;
+}
+@property --tv-white-shadow {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+body {
+  --led-core:#ffe7c2;
+  --led-edge:#fff6e7;
+  --led-halo:rgba(255, 219, 170, 0.9);
+  --led-wash:rgba(255, 225, 184, 0.22);
+  --tv-card-color:hsl(240 22% 6%);
+  --tv-text-color:hsl(215 10% 64%);
+  --tv-card-radius:28px;
+  --tv-border-width:3px;
+  --tv-animation-speed:4s;
+  --tv-interaction-speed:.55s;
+  background: #0b0f1a;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  overflow: hidden;
+  font-family: 'JetBrains Mono', monospace;
+}
+body[data-led-color="salmon"] {
+  --led-core:#ff9b8d;
+  --led-edge:#ffd0c8;
+  --led-halo:rgba(255, 145, 127, 0.92);
+  --led-wash:rgba(255, 146, 124, 0.24);
+}
+body::after {
+  content:''; position:fixed; inset:0;
+  background: repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.05) 3px,rgba(0,0,0,.05) 4px);
+  pointer-events:none; z-index:999;
+}
+
+
