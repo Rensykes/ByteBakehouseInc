@@ -3,6 +3,7 @@
 .stage {
   --desk-height:50px;
   --desk-top-height:12px;
+  --cup-bottom-adjust:5px;
   width:min(100%, 1240px);
   height:calc(100svh - var(--scene-top-pad));
   min-height:calc(100svh - var(--scene-top-pad));
@@ -441,9 +442,9 @@
 
 /* COFFEE CUP - from desk style.css */
 .coffe-cup {
-  position:absolute; bottom:55px;
+  position:absolute; bottom:calc(var(--desk-height) + var(--cup-bottom-adjust));
   left:calc(50% - 300px);
-  z-index:11;
+  z-index:8;
   transform:scale(.82);
   transform-origin:bottom center;
 }
@@ -833,6 +834,9 @@
   .macbook-wrap {
     transform:translateX(-50%) scale(.4);
   }
+  .stage {
+    --cup-bottom-adjust:1px;
+  }
   .coffe-cup {
     left:calc(50% - 250px);
     transform:scale(.72);
@@ -850,6 +854,7 @@
 
 @media (max-width: 920px) {
   .stage {
+    --cup-bottom-adjust:-2px;
     min-height:calc(100svh - var(--scene-top-pad));
   }
   .room-8bit .wall-poster {
@@ -869,10 +874,9 @@
     transform:scale(.32);
   }
   .macbook-wrap {
-    transform:translateX(-50%) scale(.31);
+    transform:translateX(-50%) scale(.34);
   }
   .coffe-cup {
-    bottom:48px;
     left:calc(50% - 190px);
     transform:scale(.62);
   }
@@ -885,6 +889,7 @@
 
 @media (max-width: 700px) {
   .stage {
+    --cup-bottom-adjust:0px;
     min-height:calc(100svh - var(--scene-top-pad));
   }
   .room-8bit .wall-poster,
@@ -896,11 +901,10 @@
     display:none;
   }
   .macbook-wrap {
-    transform:translateX(-50%) scale(.24);
+    transform:translateX(-50%) scale(.27);
   }
   .coffe-cup {
     left:calc(50% - 135px);
-    bottom:40px;
     transform:scale(.54);
   }
 }
@@ -926,7 +930,7 @@
     display:none;
   }
   .macbook-wrap {
-    transform:translateX(-50%) scale(.2);
+    transform:translateX(-50%) scale(.23);
   }
 }
 
