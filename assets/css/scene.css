@@ -1,17 +1,23 @@
 ﻿/* Room scene, desk setup, speakers, guitar, and object styles */
-/* â”€â”€ STAGE â”€â”€ */
+/* STAGE */
 .stage {
-  width:100vw; max-width:1240px;
+  --desk-height:50px;
+  --desk-top-height:12px;
+  width:min(100%, 1240px);
+  height:calc(100svh - var(--scene-top-pad));
+  min-height:calc(100svh - var(--scene-top-pad));
   display:flex; align-items:flex-end; justify-content:center;
   position:relative;
+  padding:0 clamp(16px, 4vw, 32px);
+  box-sizing:border-box;
   z-index:2;
 }
 .lack-desk {
   position:absolute;
   left:50%;
   bottom:0;
-  width:min(980px, 84vw);
-  height:50px;
+  width:min(980px, 92vw);
+  height:var(--desk-height);
   transform:translateX(-50%);
   z-index:9;
   pointer-events:none;
@@ -21,7 +27,7 @@
   left:0;
   top:0;
   width:100%;
-  height:12px;
+  height:var(--desk-top-height);
   border-radius:0;
   background:linear-gradient(180deg, #3f2b58 0%, #2a1b3d 100%);
   box-shadow:
@@ -398,7 +404,7 @@
   50%, 100% { opacity:.6; }
 }
 
-/* â•â•â•â• LAMP â€” from desk style.css â•â•â•â• */
+/* LAMP - from desk style.css */
 .lamp {
   position:absolute; bottom:250px;
   left:calc(50% - 430px);
@@ -433,7 +439,7 @@
 .lamp__middle { height:100px; width:9px; margin-left:14px; background:#2b3353; }
 .lamp__bottom { width:60px; height:14px; background:#2b3353; border-radius:10px 10px 0 0; }
 
-/* â•â•â•â• COFFEE CUP â€” from desk style.css â•â•â•â• */
+/* COFFEE CUP - from desk style.css */
 .coffe-cup {
   position:absolute; bottom:55px;
   left:calc(50% - 300px);
@@ -501,9 +507,9 @@
   100% { transform:translateX(-50%) translateY(-5rem); opacity:0; height:2rem; filter:blur(15px); }
 }
 
-/* â•â•â•â• MACBOOK â€” from macbook style.css â•â•â•â• */
+/* MACBOOK - from macbook style.css */
 .macbook-wrap {
-  position:absolute; bottom:50px;
+  position:absolute; bottom:var(--desk-height);
   left:50%; transform:translateX(-50%) scale(0.46);
   transform-origin:bottom center;
   z-index:10; width:766px;
@@ -791,7 +797,7 @@
   box-shadow:0 0 5px 3px rgba(0,0,0,.5);
 }
 
-/* â•â•â•â• GUITAR SVG â€” st0â€“st30 from doc 6 style.css (verbatim) â•â•â•â• */
+/* GUITAR SVG - st0-st30 from doc 6 style.css (verbatim) */
 .st0{fill:#565654;} .st1{fill:#F4F4F2;} .st2{fill:#DBBB37;}
 .st3{fill:#6D4326;} .st4{fill:#141413;} .st5{fill:#774C2F;}
 .st6{fill:#AF810E;} .st7{fill:#212120;} .st8{fill:#000;}
@@ -806,7 +812,7 @@
 
 .guitar-wrap {
   position:fixed; right:0; bottom:0;
-  z-index:12; height:76vh;
+  z-index:4; height:76vh;
   display:flex; align-items:flex-end;
 }
 .guitar-wrap svg {
@@ -816,6 +822,112 @@
     saturate(.82)
     drop-shadow(-20px 14px 0 rgba(5, 3, 10, .22))
     drop-shadow(-12px 12px 24px rgba(0,0,0,.62));
+}
+
+@media (max-width: 1120px) {
+  .speaker-wrap.left  { left:calc(50% - 390px); }
+  .speaker-wrap.right { right:calc(50% - 390px); }
+  .speaker-unit {
+    transform:scale(.42);
+  }
+  .macbook-wrap {
+    transform:translateX(-50%) scale(.4);
+  }
+  .coffe-cup {
+    left:calc(50% - 250px);
+    transform:scale(.72);
+  }
+  .guitar-wrap {
+    height:70vh;
+  }
+}
+
+@media (max-width: 1024px) {
+  .guitar-wrap {
+    display:none;
+  }
+}
+
+@media (max-width: 920px) {
+  .stage {
+    min-height:calc(100svh - var(--scene-top-pad));
+  }
+  .room-8bit .wall-poster {
+    transform:scale(.84);
+    transform-origin:top right;
+  }
+  .room-8bit .wall-desk {
+    left:28px;
+    transform:translateY(-50%) scale(1.6);
+  }
+  .speaker-wrap {
+    bottom:34px;
+  }
+  .speaker-wrap.left  { left:calc(50% - 290px); }
+  .speaker-wrap.right { right:calc(50% - 290px); }
+  .speaker-unit {
+    transform:scale(.32);
+  }
+  .macbook-wrap {
+    transform:translateX(-50%) scale(.31);
+  }
+  .coffe-cup {
+    bottom:48px;
+    left:calc(50% - 190px);
+    transform:scale(.62);
+  }
+  .guitar-wrap {
+    right:-30px;
+    height:60vh;
+    opacity:.55;
+  }
+}
+
+@media (max-width: 700px) {
+  .stage {
+    min-height:calc(100svh - var(--scene-top-pad));
+  }
+  .room-8bit .wall-poster,
+  .room-8bit .wall-desk,
+  .guitar-wrap {
+    display:none;
+  }
+  .speaker-wrap {
+    display:none;
+  }
+  .macbook-wrap {
+    transform:translateX(-50%) scale(.24);
+  }
+  .coffe-cup {
+    left:calc(50% - 135px);
+    bottom:40px;
+    transform:scale(.54);
+  }
+}
+
+@media (max-width: 540px) {
+  .stage {
+    --desk-height:42px;
+    --desk-top-height:10px;
+    min-height:calc(100svh - var(--scene-top-pad));
+    padding-inline:12px;
+  }
+  .lack-desk {
+    width:min(980px, 96vw);
+  }
+  .lack-desk-leg {
+    top:10px;
+    width:20px;
+    height:32px;
+  }
+  .lack-desk-leg.back-left { left:92px; height:32px; }
+  .lack-desk-leg.back-right { right:92px; height:32px; }
+  .coffe-cup {
+    display:none;
+  }
+  .macbook-wrap {
+    transform:translateX(-50%) scale(.2);
+  }
 }
 
 

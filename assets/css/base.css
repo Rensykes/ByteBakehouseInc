@@ -58,6 +58,7 @@
 }
 
 body {
+  --scene-top-pad:110px;
   --led-core:#ffe7c2;
   --led-edge:#fff6e7;
   --led-halo:rgba(255, 219, 170, 0.9);
@@ -74,7 +75,10 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  overflow: hidden;
+  width:100%;
+  padding:var(--scene-top-pad) 0 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
   font-family: 'JetBrains Mono', monospace;
 }
 body[data-led-color="salmon"] {
@@ -87,6 +91,19 @@ body::after {
   content:''; position:fixed; inset:0;
   background: repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.05) 3px,rgba(0,0,0,.05) 4px);
   pointer-events:none; z-index:999;
+}
+
+@media (max-width: 640px) {
+  body {
+    --scene-top-pad:96px;
+    justify-content:flex-start;
+  }
+}
+
+@media (max-width: 960px) {
+  body {
+    justify-content:flex-start;
+  }
 }
 
 

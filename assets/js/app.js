@@ -70,6 +70,12 @@ function stretchSpotifyEmbed() {
   spotifyElement.style.width = '100%';
   spotifyElement.style.height = '100%';
 
+  spotifyElement.querySelectorAll('iframe').forEach(function(frame) {
+    // Spotify already sets the modern allow permissions, so drop the legacy
+    // attribute to avoid the browser warning about conflicting fullscreen flags.
+    frame.removeAttribute('allowfullscreen');
+  });
+
   spotifyElement.querySelectorAll('iframe, div').forEach(function(node) {
     node.style.width = '100%';
     node.style.maxWidth = '100%';
